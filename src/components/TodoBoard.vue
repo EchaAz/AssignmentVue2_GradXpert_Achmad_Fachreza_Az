@@ -1,12 +1,10 @@
 <template>
   <div>
-    <!-- Todo form -->
     <form @submit.prevent="addNewTodo">
       <input type="text" v-model="newTodoText" placeholder="Enter a new todo">
       <button type="submit">Add Todo</button>
     </form>
 
-    <!-- Todo list -->
     <TodoItem v-for="(todo, index) in todos" :key="index" :todo="todo" :index="index" :deleteTodo="deleteTodo" :changeStatusTodo="changeStatusTodo" />
   </div>
 </template>
