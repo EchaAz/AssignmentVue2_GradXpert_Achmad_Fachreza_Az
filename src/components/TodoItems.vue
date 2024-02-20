@@ -1,7 +1,7 @@
 <template>
   <div class="todo-item">
     <input type="checkbox" :checked="todo.completed" @change="toggleStatus">
-    <span :class="{ completed: todo.completed }">{{ todo.text }}</span>
+    <span :class="{ completed: todo.completed }" class="todo-text">{{ todo.text }}</span>
     <button class="delete-button" @click="deleteTodoItem">Delete</button>
   </div>
 </template>
@@ -40,18 +40,19 @@ export default {
 
 <style scoped>
 .todo-item {
+  display: flex;
+  align-items: center;
   border: 1px solid #ccc;
   padding: 10px;
   margin-bottom: 10px;
 }
 
-.completed {
-  text-decoration: line-through;
+.todo-text {
+  flex-grow: 1;
 }
 
-.status-indicator {
-  margin-left: 10px;
-  color: #888;
+.completed {
+  text-decoration: line-through;
 }
 
 .delete-button {
@@ -60,7 +61,7 @@ export default {
   background-color: #dc3545;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 2px;
   cursor: pointer;
 }
 
@@ -68,4 +69,3 @@ export default {
   background-color: #c82333;
 }
 </style>
-
