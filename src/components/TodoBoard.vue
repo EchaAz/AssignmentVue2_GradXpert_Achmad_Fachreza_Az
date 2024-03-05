@@ -9,7 +9,7 @@
 
     <div class="todo-container">
       <div v-for="(todo, index) in todos" :key="index" class="todo-item">
-        <TodoItem :todo="todo" :index="index" :deleteTodo="deleteTodo" :changeStatusTodo="changeStatusTodo" />
+        <TodoItem :todo="todo" :index="index" :deleteTodo="deleteTodo" :editTodo="editTodo" :changeStatusTodo="changeStatusTodo" />
       </div>
     </div>
   </div>
@@ -36,6 +36,10 @@ export default {
       type: Function,
       required: true,
     },
+    editTodo: {
+      type: Function,
+      required: true,
+    },
     changeStatusTodo: {
       type: Function,
       required: true,
@@ -44,7 +48,6 @@ export default {
   data() {
     return {
       newTodoText: '',
-      newTodoDate: '',
     };
   },
   methods: {
@@ -53,10 +56,8 @@ export default {
       this.addTodo({
         text: this.newTodoText,
         completed: false,
-        date: this.newTodoDate,
       });
       this.newTodoText = '';
-      this.newTodoDate = '';
     },
   },
 };
@@ -64,7 +65,8 @@ export default {
 
 <style scoped>
 .todo-board {
-  background-color: rgb(198, 198, 198);
+  background-color: rgba(3, 255, 49, 0.801);
+  color: black;
   margin: 0 auto;
 }
 
@@ -73,7 +75,8 @@ h2 {
 }
 
 .todo-container{
-  background-color: aliceblue;
+  background-color: rgba(240, 248, 255, 0.774);
+  color: black;
 }
 .add-todo-form {
   margin-bottom: 20px;

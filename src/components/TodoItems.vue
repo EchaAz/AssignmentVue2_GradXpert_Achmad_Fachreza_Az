@@ -3,6 +3,7 @@
     <input type="checkbox" :checked="todo.completed" @change="toggleStatus">
     <span :class="{ completed: todo.completed }" class="todo-text">{{ todo.text }}</span>
     <button class="delete-button" @click="deleteTodoItem">Delete</button>
+    <button class="edit-button" @click="editTodoItem">Edit</button>
   </div>
 </template>
 
@@ -26,6 +27,10 @@ export default {
       type: Function,
       required: true,
     },
+    editTodo: {
+      type: Function,
+      required: true,
+    },
   },
   methods: {
     deleteTodoItem() {
@@ -33,6 +38,9 @@ export default {
     },
     toggleStatus() {
       this.changeStatusTodo(this.index);
+    },
+    editTodoItem() {
+      this.editTodo(this.index);
     },
   },
 };
@@ -67,5 +75,20 @@ export default {
 
 .delete-button:hover {
   background-color: #c82333;
+}
+
+.edit-button {
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: #3543dc;
+  color: #fff;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.edit-button:hover {
+  background-color: #2e23c8;
 }
 </style>
